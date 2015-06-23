@@ -1,0 +1,47 @@
+﻿<Page
+    x:Class="Mahiz.BlinkingLed.UWA.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Mahiz.BlinkingLed.UWA"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid Margin="20,30,20,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock x:Name="textBlock" Grid.Row="0"
+                      Text="Blinking Led" Style="{ThemeResource HeaderTextBlockStyle}"/>
+            
+            <StackPanel Grid.Row="1"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                
+                <Ellipse x:Name="LedImage" Fill="LightGray" Stroke="White" Width="100" Height="100" Margin="10"/> 
+                
+                <StackPanel Margin="0,30,0,0"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+                    
+                    <TextBlock Text="{Binding Value, ElementName=BlinkingPeriod}" FontSize="24" /> 
+                    <TextBlock Text=" ms" FontSize="24" />
+                    
+                </StackPanel>
+
+                <Slider x:Name="BlinkingPeriod"
+                        Margin="0,30,0,0"
+                        Minimum="200" Maximum="1000" Value="600" ValueChanged="BlinkingPeriod_ValueChanged" />
+                
+                <ToggleSwitch x:Name="BlinkingSwitch"
+                              Margin="60,30,0,0"
+                              Header="Blinking activity"
+                              IsEnabled="False"
+                              Toggled="toggleSwitch_Toggled" Width="123" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>
